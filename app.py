@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
+import google.generativeai as genai
 
 app = Flask(__name__)
+
+genai.configure(api_key="AIzaSyB8GgP4Wg0rX7fPgfiqWBbMj4FuhSZO7Uw")
+
+model = genai.GenerativeModel("gemini-pro")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -9,19 +14,22 @@ def home():
 
     if request.method == "POST":
 
-        question = request.form["question"].lower()
+        question = request.form["question"]
 
-        if "salah" in question:
-            answer = "Salah is the Islamic prayer performed five times daily."
+        prompt = f"""
+        You are an Islamic AI assistant.
 
-        elif "quran" in question:
-            answer = "The Quran is the holy book of Islam."
+        Answer respectfully.
+        Use simple language.
+        Answer Islamic questions carefully.
 
-        elif "allah" in question:
-            answer = "Allah is the Arabic word for God."
+        User question:
+        {question}
+        """
 
-        else:
-            answer = "Sorry, I am still learning."
+        response = model.generate_content(prompt)
+
+        answer = response.text
 
     return render_template("index.html", answer=answer)
 
