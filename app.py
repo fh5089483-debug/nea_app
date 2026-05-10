@@ -1,32 +1,29 @@
 from flask import Flask, render_template, request
-import sqlite3
 
 app = Flask(__name__)
 
-def get_db():
-    return sqlite3.connect("exam.db")
-
-@app.route('/')
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template('index.html')
 
-@app.route('/test/<subject>', methods=['GET', 'POST'])
-def test(subject):
-    conn = get_db()
-    c = conn.cursor()
+    answer = ""
 
-    c.execute("SELECT * FROM questions WHERE subject=?", (subject,))
-    questions = c.fetchall()
+    if request.method == "POST":
 
-    if request.method == 'POST':
-        score = 0
-        for q in questions:
-            qid = str(q[0])
-            if request.form.get(qid) == q[6]:
-                score += 1
-        return render_template('result.html', score=score, total=len(questions))
+        question = request.form["question"].lower()
 
-    return render_template('test.html', questions=questions, subject=subject)
+        if "salah" in question:
+            answer = "Salah is the Islamic prayer performed five times daily."
+
+        elif "quran" in question:
+            answer = "The Quran is the holy book of Islam."
+
+        elif "allah" in question:
+            answer = "Allah is the Arabic word for God."
+
+        else:
+            answer = "Sorry, I am still learning."
+
+    return render_template("index.html", answer=answer)
 
 if __name__ == "__main__":
     app.run()
