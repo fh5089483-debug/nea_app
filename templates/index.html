@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NEA AI Chat</title>
+    <title>NEA App</title>
 </head>
 <body>
 
-    <h1>NEA AI Chatbot</h1>
+    <h1>Welcome to NEA Exam App</h1>
 
-    <form method="POST">
+    <h2>Select Subject</h2>
 
-        <input type="text" name="message" placeholder="Type message">
+    <a href="/test/Physics">
+        <button>Physics</button>
+    </a>
 
-        <button type="submit">Send</button>
+    <br><br>
 
-    </form>
+    <a href="/test/Biology">
+        <button>Biology</button>
+    </a>
 
-    <br>
+    <br><br>
 
-    <h2>Bot Reply:</h2>
+    <a href="/test/Computer">
+        <button>Computer</button>
+    </a>
 
-    <p>{{ reply }}</p>
+    <br><br>
 
-    <br>
-
-    <a href="/">
-        <button>Back Home</button>
+    <a href="/chat">
+        <button>Open AI Chatbot</button>
     </a>
 
 </body>
