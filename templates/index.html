@@ -1,35 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NEA App</title>
+
+    <title>NEA Practice App</title>
+
+    <style>
+
+        body{
+            background:#121212;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+            padding-top:50px;
+        }
+
+        .box{
+            width:80%;
+            margin:auto;
+            background:#1e1e1e;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0px 0px 15px black;
+        }
+
+        h1{
+            color:#00ffcc;
+        }
+
+        button{
+            width:220px;
+            padding:15px;
+            margin:10px;
+            border:none;
+            border-radius:12px;
+            background:#00ffcc;
+            color:black;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        button:hover{
+            background:white;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-    <h1>Welcome to NEA Exam App</h1>
+    <div class="box">
 
-    <h2>Select Subject</h2>
+        <h1>NEA Practice App</h1>
 
-    <a href="/test/Physics">
-        <button>Physics</button>
-    </a>
+        <h2>Select Subject</h2>
 
-    <br><br>
+        <a href="/test/Physics">
+            <button>Physics</button>
+        </a>
 
-    <a href="/test/Biology">
-        <button>Biology</button>
-    </a>
+        <br>
 
-    <br><br>
+        <a href="/test/Biology">
+            <button>Biology</button>
+        </a>
 
-    <a href="/test/Computer">
-        <button>Computer</button>
-    </a>
+        <br>
 
-    <br><br>
+        <a href="/test/Computer">
+            <button>Computer</button>
+        </a>
 
-    <a href="/chat">
-        <button>Open AI Chatbot</button>
-    </a>
+        <br>
+
+        <a href="/chat">
+            <button>AI Chatbot</button>
+        </a>
+
+    </div>
 
 </body>
 </html>
